@@ -13,7 +13,7 @@ ScholarSquill transforms academic research workflows by automatically converting
 ## Key Features
 
 ### Core Functionality
-- **Literature Note Generation**: Convert PDF papers into structured markdown literature notes
+- **Literature Note Generation**: Convert PDF papers into structured markdown literature notes obtimized for Obsidian Users 
 - **Discourse Pattern Analysis**: Extract academic "code language" and argument structures
 - **Citation Context Mapping**: Analyze citation contexts and build reference networks showing intellectual lineage
 - **Intelligent PDF Processing**: Advanced text extraction and metadata analysis from scientific papers

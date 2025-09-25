@@ -1,0 +1,43 @@
+# Core MCP dependencies
+mcp>=1.0.0
+
+# PDF processing
+PyPDF2>=3.0.0
+pdfplumber>=0.10.0
+
+# Text processing and analysis
+nltk>=3.8.1
+spacy>=3.7.0
+
+# Template processing
+jinja2>=3.1.2
+
+# Network visualization for citemap
+networkx>=3.0
+plotly>=5.15.0
+
+# File handling and utilities
+pathlib>=1.0.1
+
+# Data validation and serialization
+pydantic>=2.0.0
+
+# Testing dependencies
+pytest>=7.4.0
+pytest-asyncio>=0.21.1
+pytest-cov>=4.1.0
+pytest-mock>=3.11.1
+
+# Development tools
+black>=23.7.0
+flake8>=6.0.0
+mypy>=1.5.0
+isort>=5.12.0
+
+# Optional OCR support (uncomment if needed)
+# pytesseract>=0.3.10
+# Pillow>=10.0.0
+
+# Optional advanced NLP features (uncomment if needed)
+# transformers>=4.30.0
+# torch>=2.0.0

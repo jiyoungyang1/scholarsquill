@@ -1,0 +1,203 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scholarsquill"
+version = "0.1.0"
+description = "MCP server for processing scientific PDF papers into structured markdown literature notes"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "ScholarSquill Team", email = "team@scholarsquill.com"}
+]
+maintainers = [
+    {name = "ScholarSquill Team", email = "team@scholarsquill.com"}
+]
+keywords = ["mcp", "pdf", "academic", "literature", "notes", "research", "scientific", "papers"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Text Processing :: Markup :: Markdown",
+    "Topic :: Text Processing :: Linguistic",
+    "Topic :: Documentation",
+    "Topic :: Education",
+]
+dependencies = [
+    "mcp>=1.0.0",
+    "PyPDF2>=3.0.0",
+    "pdfplumber>=0.10.0",
+    "nltk>=3.8.1",
+    "spacy>=3.7.0",
+    "jinja2>=3.1.2",
+    "pathlib>=1.0.1",
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.1",
+    "pytest-cov>=4.1.0",
+    "pytest-mock>=3.11.1",
+    "black>=23.7.0",
+    "flake8>=6.0.0",
+    "mypy>=1.5.0",
+    "isort>=5.12.0",
+    "pre-commit>=3.3.0",
+]
+test = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.1",
+    "pytest-cov>=4.1.0",
+    "pytest-mock>=3.11.1",
+    "pytest-xdist>=3.3.0",
+]
+ocr = [
+    "pytesseract>=0.3.10",
+    "Pillow>=10.0.0",
+]
+nlp-advanced = [
+    "transformers>=4.30.0",
+    "torch>=2.0.0",
+    "scikit-learn>=1.3.0",
+]
+all = [
+    "scholarsquill[dev,test,ocr,nlp-advanced]",,
+]
+
+[project.urls]
+Homepage = "https://github.com/scholarsquill/scholarsquill"
+Repository = "https://github.com/scholarsquill/scholarsquill"
+Issues = "https://github.com/scholarsquill/scholarsquill/issues"
+Documentation = "https://github.com/scholarsquill/scholarsquill/wiki"
+Changelog = "https://github.com/scholarsquill/scholarsquill/blob/main/CHANGELOG.md"
+
+[project.scripts]
+scholarsquill = "scholarsquill.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["scholarsquill_kiro*"]
+exclude = ["tests*"]
+
+[tool.setuptools.package-dir]
+"scholarsquill_kiro" = "src"
+
+[tool.setuptools.package-data]
+"scholarsquill_kiro" = ["templates/*.md", "py.typed"]
+
+[tool.black]
+line-length = 88
+target-version = ['py38', 'py39', 'py310', 'py311', 'py312']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | __pycache__
+)/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+known_first_party = ["scholarsquill_kiro"]
+known_third_party = ["mcp", "jinja2", "PyPDF2", "pdfplumber", "nltk", "spacy"]
+sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+show_error_codes = true
+namespace_packages = true
+explicit_package_bases = true
+
+[[tool.mypy.overrides]]
+module = [
+    "PyPDF2.*",
+    "pdfplumber.*",
+    "nltk.*",
+    "spacy.*",
+]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--cov=src",
+    "--cov-report=term-missing",
+    "--cov-report=html:htmlcov",
+    "--cov-report=xml:coverage.xml",
+    "--cov-fail-under=80",
+    "-v",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+]
+filterwarnings = [
+    "error",
+    "ignore::UserWarning",
+    "ignore::DeprecationWarning",
+]
+
+[tool.coverage.run]
+source = ["src"]
+omit = [
+    "*/tests/*",
+    "*/test_*.py",
+    "*/__pycache__/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]

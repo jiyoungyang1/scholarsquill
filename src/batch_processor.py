@@ -1,5 +1,5 @@
 """
-Batch processing for ScholarSquill Kiro MCP Server
+Batch processing for ScholarSquill MCP Server
 """
 
 import asyncio

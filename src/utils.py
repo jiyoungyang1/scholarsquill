@@ -1,5 +1,5 @@
 """
-Utility functions for ScholarSquill Kiro MCP Server
+Utility functions for ScholarSquill MCP Server
 """
 
 import re

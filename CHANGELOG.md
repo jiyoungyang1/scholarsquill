@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Initial implementation of ScholarSquill Kiro MCP Server
+- Initial implementation of ScholarSquill MCP Server
 - PDF processing capabilities with PyPDF2 and pdfplumber
 - Content analysis engine for scientific papers
 - Template-based note generation system
@@ -35,7 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2024-01-XX
 
 ### Added
-- Initial release of ScholarSquill Kiro MCP Server
+- Initial release of ScholarSquill MCP Server
 - Core functionality for processing scientific PDF papers
 - Template-based markdown note generation
 - MCP protocol compliance

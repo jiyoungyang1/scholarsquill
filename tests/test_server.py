@@ -1,5 +1,5 @@
 """
-Integration tests for ScholarsQuill Kiro MCP Server
+Integration tests for ScholarsQuill MCP Server
 """
 
 import asyncio
@@ -9,13 +9,13 @@ from pathlib import Path
 from unittest.mock import Mock, patch, AsyncMock
 from typing import Dict, Any
 
-from src.server import ScholarsQuillKiroServer
+from src.server import ScholarsQuillServer
 from src.config import ServerConfig
 from src.models import PaperMetadata, FocusType, DepthType, FormatType
 from src.exceptions import FileError, ProcessingError
 
 
-class TestScholarsQuillKiroServer:
+class TestScholarsQuillServer:
     """Test cases for the main MCP server class"""
     
     @pytest.fixture
@@ -33,7 +33,7 @@ class TestScholarsQuillKiroServer:
     @pytest.fixture
     def server(self, server_config):
         """Create test server instance"""
-        return ScholarsQuillKiroServer(server_config)
+        return ScholarsQuillServer(server_config)
     
     @pytest.fixture
     def sample_metadata(self):
@@ -283,7 +283,7 @@ class TestMCPProtocolCompliance:
     def server(self):
         """Create server for protocol testing"""
         config = ServerConfig(log_level="DEBUG")
-        return ScholarsQuillKiroServer(config)
+        return ScholarsQuillServer(config)
     
     @pytest.mark.asyncio
     async def test_tool_schema_definitions(self, server):
@@ -329,7 +329,7 @@ class TestEndToEndWorkflow:
             default_output_dir="test-e2e-output",
             log_level="DEBUG"
         )
-        return ScholarsQuillKiroServer(config)
+        return ScholarsQuillServer(config)
     
     @pytest.mark.asyncio
     async def test_complete_workflow(self, server, tmp_path):

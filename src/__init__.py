@@ -1,5 +1,5 @@
 """
-ScholarSquill Kiro MCP Server
+ScholarSquill MCP Server
 
 A Model Context Protocol server for processing scientific PDF papers
 into structured markdown literature notes.
@@ -11,7 +11,7 @@ __email__ = "team@scholarsquill.com"
 __license__ = "MIT"
 
 # Main components
-from .server import ScholarsQuillKiroServer
+from .server import ScholarsQuillServer
 from .config import ServerConfig, ProcessingConfig, TemplateConfig
 from .models import (
     PaperMetadata,
@@ -23,7 +23,7 @@ from .models import (
 )
 
 __all__ = [
-    "ScholarsQuillKiroServer",
+    "ScholarsQuillServer",
     "ServerConfig",
     "ProcessingConfig", 
     "TemplateConfig",

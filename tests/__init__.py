@@ -1,3 +1,3 @@
 """
-Test suite for ScholarSquill Kiro MCP Server
+Test suite for ScholarSquill MCP Server
 """

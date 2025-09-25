@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Main execution script for ScholarsQuill Kiro MCP Server
+Main execution script for ScholarsQuill MCP Server
 Demonstrates complete workflow integration and provides CLI interface
 """
 
@@ -11,24 +11,24 @@ import sys
 from pathlib import Path
 from typing import Dict, Any, Optional
 
-from .server import ScholarsQuillKiroServer
+from .server import ScholarsQuillServer
 from .config import ServerConfig
 from .models import FocusType, DepthType, FormatType, CodelangFocusType, SectionFilterType
 from .utils import setup_logging
 
 
-class ScholarsQuillKiroCLI:
-    """Command-line interface for ScholarsQuill Kiro"""
+class ScholarsQuillCLI:
+    """Command-line interface for ScholarsQuill"""
     
     def __init__(self):
-        self.server: Optional[ScholarsQuillKiroServer] = None
+        self.server: Optional[ScholarsQuillServer] = None
     
     async def initialize(self, config: Optional[ServerConfig] = None) -> None:
         """Initialize the server"""
         if not config:
             config = ServerConfig.from_env()
         
-        self.server = ScholarsQuillKiroServer(config)
+        self.server = ScholarsQuillServer(config)
         await self.server.initialize()
     
     async def process_file(
@@ -304,7 +304,7 @@ class ScholarsQuillKiroCLI:
 async def main():
     """Main CLI entry point"""
     parser = argparse.ArgumentParser(
-        description="ScholarsQuill Kiro - PDF to Literature Notes Converter",
+        description="ScholarsQuill - PDF to Literature Notes Converter",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
@@ -396,7 +396,7 @@ Examples:
     setup_logging(args.log_level)
     
     # Create CLI instance
-    cli = ScholarsQuillKiroCLI()
+    cli = ScholarsQuillCLI()
     
     try:
         # Initialize server
@@ -501,7 +501,7 @@ Examples:
             # Run as MCP server
             from mcp.server.stdio import stdio_server
             
-            print("Starting ScholarsQuill Kiro MCP Server...", file=sys.stderr)
+            print("Starting ScholarsQuill MCP Server...", file=sys.stderr)
             
             async with stdio_server() as (read_stream, write_stream):
                 await cli.server.get_server().run(

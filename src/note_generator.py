@@ -1,5 +1,5 @@
 """
-Note generation engine for ScholarSquill Kiro MCP Server
+Note generation engine for ScholarSquill MCP Server
 """
 
 import logging

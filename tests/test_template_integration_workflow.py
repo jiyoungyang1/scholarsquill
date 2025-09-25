@@ -59,7 +59,7 @@ class TestTemplateWorkflowIntegration:
 {{ limitations }}
 {% endif %}
 
-*Generated on {{ generated_at.strftime('%Y-%m-%d %H:%M:%S') }} using ScholarSquill Kiro*
+*Generated on {{ generated_at.strftime('%Y-%m-%d %H:%M:%S') }} using ScholarSquill*
 """,
             
             "theory.md": """# {{ title }}
@@ -86,7 +86,7 @@ class TestTemplateWorkflowIntegration:
 - {{ assumption }}
 {% endfor %}
 
-*Generated on {{ generated_at.strftime('%Y-%m-%d %H:%M:%S') }} using ScholarSquill Kiro*
+*Generated on {{ generated_at.strftime('%Y-%m-%d %H:%M:%S') }} using ScholarSquill*
 """,
             
             "review.md": """# {{ title }}
@@ -110,7 +110,7 @@ class TestTemplateWorkflowIntegration:
 - {{ gap }}
 {% endfor %}
 
-*Generated on {{ generated_at.strftime('%Y-%m-%d %H:%M:%S') }} using ScholarSquill Kiro*
+*Generated on {{ generated_at.strftime('%Y-%m-%d %H:%M:%S') }} using ScholarSquill*
 """,
             
             "method.md": """# {{ title }}
@@ -137,7 +137,7 @@ class TestTemplateWorkflowIntegration:
 - {{ advantage }}
 {% endfor %}
 
-*Generated on {{ generated_at.strftime('%Y-%m-%d %H:%M:%S') }} using ScholarSquill Kiro*
+*Generated on {{ generated_at.strftime('%Y-%m-%d %H:%M:%S') }} using ScholarSquill*
 """,
             
             "balanced.md": """# {{ title }}
@@ -173,7 +173,7 @@ class TestTemplateWorkflowIntegration:
 - {{ app }}
 {% endfor %}
 
-*Generated on {{ generated_at.strftime('%Y-%m-%d %H:%M:%S') }} using ScholarSquill Kiro*
+*Generated on {{ generated_at.strftime('%Y-%m-%d %H:%M:%S') }} using ScholarSquill*
 """
         }
         

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Core ScholarsQuill Kiro Server functionality without MCP dependencies
+Core ScholarsQuill Server functionality without MCP dependencies
 Used for testing and standalone operation
 """
 
@@ -39,8 +39,8 @@ from .utils import setup_logging, ensure_directory
 logger = logging.getLogger("scholarsquill-core")
 
 
-class ScholarsQuillKiroCore:
-    """Core functionality for ScholarsQuill Kiro without MCP dependencies"""
+class ScholarsQuillCore:
+    """Core functionality for ScholarsQuill without MCP dependencies"""
     
     def __init__(self, config: Optional[ServerConfig] = None):
         """Initialize the core server with configuration"""
@@ -58,7 +58,7 @@ class ScholarsQuillKiroCore:
         # Setup logging
         setup_logging(self.config.log_level)
         
-        logger.info("ScholarsQuill Kiro Core initialized")
+        logger.info("ScholarsQuill Core initialized")
     
     async def initialize(self) -> None:
         """Initialize the core server"""

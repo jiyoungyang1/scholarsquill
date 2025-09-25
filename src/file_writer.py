@@ -1,5 +1,5 @@
 """
-File I/O and output handling for ScholarSquill Kiro MCP Server
+File I/O and output handling for ScholarSquill MCP Server
 """
 
 import os

@@ -1,5 +1,5 @@
 """
-Core interfaces for ScholarSquill Kiro MCP Server components
+Core interfaces for ScholarSquill MCP Server components
 """
 
 from abc import ABC, abstractmethod

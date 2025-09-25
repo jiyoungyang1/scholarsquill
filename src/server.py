@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ScholarsQuill Kiro MCP Server
+ScholarsQuill MCP Server
 Standalone MCP server for processing scientific PDF papers into structured markdown literature notes
 """
 
@@ -108,8 +108,8 @@ except ImportError:
 # Configure logging
 logger = logging.getLogger("scholarsquill")
 
-class ScholarsQuillKiroServer:
-    """Main MCP server class for ScholarsQuill Kiro"""
+class ScholarsQuillServer:
+    """Main MCP server class for ScholarsQuill"""
     
     def __init__(self, config: Optional[ServerConfig] = None):
         """
@@ -123,7 +123,7 @@ class ScholarsQuillKiroServer:
         
         # Setup logging first
         setup_logging(self.config.log_level)
-        logger.info("Initializing ScholarsQuill Kiro MCP Server with AI integration architecture...")
+        logger.info("Initializing ScholarsQuill MCP Server with AI integration architecture...")
         
         # Initialize primary AI integration components
         try:
@@ -179,7 +179,7 @@ class ScholarsQuillKiroServer:
         # Validate component readiness
         self._validate_component_readiness()
         
-        logger.info("🚀 ScholarsQuill Kiro MCP Server initialized successfully with AI integration architecture")
+        logger.info("🚀 ScholarsQuill MCP Server initialized successfully with AI integration architecture")
         logger.info("📋 Architecture: MCP server provides content + templates + instructions → Claude performs analysis")
     
     def _validate_component_readiness(self) -> None:
@@ -350,7 +350,7 @@ class ScholarsQuillKiroServer:
         
         @self.server.list_resources()
         async def list_resources() -> List[Resource]:
-            """List available ScholarsQuill Kiro resources"""
+            """List available ScholarsQuill resources"""
             resources = [
                 Resource(
                     uri="scholarsquill://templates/",
@@ -369,7 +369,7 @@ class ScholarsQuillKiroServer:
         
         @self.server.read_resource()
         async def read_resource(uri: str) -> str:
-            """Read ScholarsQuill Kiro resources"""
+            """Read ScholarsQuill resources"""
             if uri == "scholarsquill://templates/":
                 templates = await self.get_available_templates()
                 return json.dumps(templates, indent=2)
@@ -2191,22 +2191,22 @@ async def main():
     
     # Create server instance
     config = ServerConfig()
-    kiro_server = ScholarsQuillKiroServer(config)
+   _server = ScholarsQuillServer(config)
     
     # Initialize server
-    await kiro_server.initialize()
+    await_server.initialize()
     
-    logger.info("Starting ScholarsQuill Kiro MCP Server...")
+    logger.info("Starting ScholarsQuill MCP Server...")
     
     try:
         async with stdio_server() as (read_stream, write_stream):
-            await kiro_server.get_server().run(
+            await_server.get_server().run(
                 read_stream,
                 write_stream,
-                kiro_server.get_server().create_initialization_options()
+               _server.get_server().create_initialization_options()
             )
     finally:
-        await kiro_server.shutdown()
+        await_server.shutdown()
 
 
 if __name__ == "__main__":

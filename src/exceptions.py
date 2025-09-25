@@ -1,5 +1,5 @@
 """
-Exception classes and error handling for ScholarSquill Kiro MCP Server
+Exception classes and error handling for ScholarSquill MCP Server
 """
 
 from dataclasses import dataclass, field

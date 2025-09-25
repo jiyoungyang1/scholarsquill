@@ -1,5 +1,5 @@
 """
-Citation Context Mapping Processor for ScholarSquill Kiro
+Citation Context Mapping Processor for ScholarSquill
 
 This module implements the citemap functionality for analyzing citation contexts
 and building reference networks within academic papers.

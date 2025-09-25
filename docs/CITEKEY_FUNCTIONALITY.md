@@ -2,7 +2,7 @@
 
 ## Overview
 
-The ScholarSquill Kiro MCP Server now includes robust citekey-based filename generation for literature notes. This ensures consistent, predictable filenames that follow academic citation conventions.
+The ScholarSquill MCP Server now includes robust citekey-based filename generation for literature notes. This ensures consistent, predictable filenames that follow academic citation conventions.
 
 ## Citekey Format
 

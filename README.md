@@ -1,4 +1,4 @@
-# ScholarSquill Kiro
+# ScholarSquill
 
 ⚠️ **Project Status: In Development** ⚠️
 
@@ -190,10 +190,10 @@ python -m src.main server
 
 ```python
 import asyncio
-from src.main import ScholarsQuillKiroCLI
+from src.main import ScholarsQuillCLI
 
 async def process_papers():
-    cli = ScholarsQuillKiroCLI()
+    cli = ScholarsQuillCLI()
     await cli.initialize()
     
     # Process single file
@@ -577,6 +577,6 @@ For issues, feature requests, or questions:
 
 ---
 
-**ScholarSquill Kiro** - Transforming academic research through intelligent document processing.
+**ScholarSquill** - Transforming academic research through intelligent document processing.
 
 *Note: This is an active development project. Core features are functional, but metadata extraction and citation mapping capabilities are being enhanced. Contributions and feedback are welcome as we work toward a stable release.*

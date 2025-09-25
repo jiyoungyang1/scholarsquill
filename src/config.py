@@ -1,5 +1,5 @@
 """
-Configuration classes for ScholarSquill Kiro MCP Server
+Configuration classes for ScholarSquill MCP Server
 """
 
 import os

@@ -1,5 +1,5 @@
 """
-End-to-end integration tests for ScholarsQuill Kiro MCP Server
+End-to-end integration tests for ScholarsQuill MCP Server
 Tests complete workflow from PDF input to markdown output
 """
 
@@ -11,8 +11,8 @@ from pathlib import Path
 from unittest.mock import Mock, patch, AsyncMock
 from typing import Dict, Any
 
-from src.server import ScholarsQuillKiroServer
-from src.main import ScholarsQuillKiroCLI
+from src.server import ScholarsQuillServer
+from src.main import ScholarsQuillCLI
 from src.config import ServerConfig
 from src.models import PaperMetadata, AnalysisResult, FocusType, DepthType
 
@@ -154,7 +154,7 @@ class TestEndToEndWorkflow:
             default_templates_dir=str(temp_workspace / "templates"),
             log_level="DEBUG"
         )
-        server = ScholarsQuillKiroServer(config)
+        server = ScholarsQuillServer(config)
         await server.initialize()
         
         # Create test PDF file
@@ -220,7 +220,7 @@ class TestEndToEndWorkflow:
             batch_size_limit=10,
             log_level="DEBUG"
         )
-        server = ScholarsQuillKiroServer(config)
+        server = ScholarsQuillServer(config)
         await server.initialize()
         
         # Create multiple test PDF files
@@ -283,7 +283,7 @@ class TestEndToEndWorkflow:
             default_output_dir=str(temp_workspace / "output"),
             log_level="DEBUG"
         )
-        server = ScholarsQuillKiroServer(config)
+        server = ScholarsQuillServer(config)
         await server.initialize()
         
         # Test file not found
@@ -322,7 +322,7 @@ class TestEndToEndWorkflow:
             default_output_dir=str(temp_workspace / "output"),
             log_level="DEBUG"
         )
-        server = ScholarsQuillKiroServer(config)
+        server = ScholarsQuillServer(config)
         await server.initialize()
         
         test_pdf = temp_workspace / "test.pdf"
@@ -364,7 +364,7 @@ class TestCLIIntegration:
         sample_analysis_result, sample_note_content
     ):
         """Test CLI single file processing"""
-        cli = ScholarsQuillKiroCLI()
+        cli = ScholarsQuillCLI()
         
         config = ServerConfig(
             default_output_dir=str(temp_workspace / "output"),
@@ -398,7 +398,7 @@ class TestCLIIntegration:
     @pytest.mark.asyncio
     async def test_cli_batch_processing(self, temp_workspace):
         """Test CLI batch processing"""
-        cli = ScholarsQuillKiroCLI()
+        cli = ScholarsQuillCLI()
         
         config = ServerConfig(
             default_output_dir=str(temp_workspace / "output"),
@@ -434,7 +434,7 @@ class TestCLIIntegration:
         self, temp_workspace, sample_pdf_content, sample_metadata
     ):
         """Test CLI paper analysis"""
-        cli = ScholarsQuillKiroCLI()
+        cli = ScholarsQuillCLI()
         
         config = ServerConfig(log_level="DEBUG")
         await cli.initialize(config)
@@ -458,7 +458,7 @@ class TestCLIIntegration:
     @pytest.mark.asyncio
     async def test_cli_template_listing(self, temp_workspace):
         """Test CLI template listing"""
-        cli = ScholarsQuillKiroCLI()
+        cli = ScholarsQuillCLI()
         
         config = ServerConfig(log_level="DEBUG")
         await cli.initialize(config)
@@ -490,7 +490,7 @@ class TestMCPServerIntegration:
             default_output_dir=str(temp_workspace / "output"),
             log_level="DEBUG"
         )
-        server = ScholarsQuillKiroServer(config)
+        server = ScholarsQuillServer(config)
         await server.initialize()
         
         test_pdf = temp_workspace / "test.pdf"
@@ -527,7 +527,7 @@ class TestMCPServerIntegration:
     async def test_mcp_error_response_format(self, temp_workspace):
         """Test MCP error response format"""
         config = ServerConfig(log_level="DEBUG")
-        server = ScholarsQuillKiroServer(config)
+        server = ScholarsQuillServer(config)
         await server.initialize()
         
         # Test with non-existent file
@@ -561,7 +561,7 @@ class TestPerformanceAndScaling:
             default_output_dir=str(temp_workspace / "output"),
             log_level="DEBUG"
         )
-        server = ScholarsQuillKiroServer(config)
+        server = ScholarsQuillServer(config)
         await server.initialize()
         
         # Create multiple test files

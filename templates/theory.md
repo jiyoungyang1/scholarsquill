@@ -177,4 +177,4 @@
 {{ related_materials or "Supporting derivations, supplementary information, or connected papers" }}
 
 ---
-*Generated on {{ generated_at.strftime('%Y-%m-%d %H:%M:%S') }} using ScholarSquill Kiro*
+*Generated on {{ generated_at.strftime('%Y-%m-%d %H:%M:%S') }} using ScholarSquill*

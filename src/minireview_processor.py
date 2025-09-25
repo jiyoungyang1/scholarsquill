@@ -1,5 +1,5 @@
 """
-Mini-review processor for ScholarSquill Kiro MCP Server
+Mini-review processor for ScholarSquill MCP Server
 Handles comprehensive topic-focused analysis across multiple papers
 """
 
@@ -1102,7 +1102,7 @@ Analysis of {len(papers_info)} papers related to {options.topic}.
 {chr(10).join(f"- {paper.get('title', 'Unknown')}" for paper in papers_info[:10])}
 
 ## Generated
-{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} using ScholarSquill Kiro
+{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} using ScholarSquill
 """
     
     def get_pdf_files(self, directory_path: str) -> List[Path]:

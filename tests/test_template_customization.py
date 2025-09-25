@@ -282,7 +282,7 @@ class TestTemplateInheritance:
         
         # Check generation info
         assert "generation_info" in enhanced_data
-        assert enhanced_data["generation_info"]["generator"] == "ScholarSquill Kiro"
+        assert enhanced_data["generation_info"]["generator"] == "ScholarSquill"
 
 
 class TestTemplateHelperFunctions:
@@ -483,7 +483,7 @@ class TestTemplateCustomizationIntegration:
         
         # Check generation metadata
         assert "Generated on 2023-12-01" in rendered_deep
-        assert "ScholarSquill Kiro" in rendered_deep
+        assert "ScholarSquill" in rendered_deep
     
     def test_template_without_optional_content(self, template_processor):
         """Test template rendering when optional content is missing"""

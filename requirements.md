@@ -80,7 +80,7 @@ The scholarsquill MCP server is a new, standalone Model Context Protocol server 
 
 ### Requirement 7
 
-**User Story:** As a developer, I want the MCP server to follow standard MCP protocol specifications, so that it integrates properly with Kiro and other MCP-compatible tools.
+**User Story:** As a developer, I want the MCP server to follow standard MCP protocol specifications, so that it integrates properly with and other MCP-compatible tools.
 
 #### Acceptance Criteria
 

@@ -12,7 +12,7 @@ from pathlib import Path
 src_path = Path(__file__).parent / "src"
 sys.path.insert(0, str(src_path))
 
-from server import ScholarsQuillKiroServer
+from server import ScholarsQuillServer
 from config import ServerConfig
 
 async def test_mcp_integration():
@@ -22,7 +22,7 @@ async def test_mcp_integration():
     
     # Initialize server
     config = ServerConfig()
-    server = ScholarsQuillKiroServer(config)
+    server = ScholarsQuillServer(config)
     
     print("✅ Server initialized successfully")
     
@@ -127,7 +127,7 @@ async def test_focus_depth_combinations():
     print("\n=== Testing All Focus/Depth Combinations ===")
     
     config = ServerConfig()
-    server = ScholarsQuillKiroServer(config)
+    server = ScholarsQuillServer(config)
     
     focus_types = ["research", "theory", "method", "review", "balanced"]
     depth_levels = ["quick", "standard", "deep"]

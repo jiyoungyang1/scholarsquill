@@ -1,5 +1,5 @@
 """
-Command parsing for ScholarSquill Kiro MCP Server
+Command parsing for ScholarSquill MCP Server
 """
 
 import re

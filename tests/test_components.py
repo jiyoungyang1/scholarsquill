@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Test individual components of ScholarsQuill Kiro
+Test individual components of ScholarsQuill
 """
 
 import sys
@@ -153,7 +153,7 @@ def test_interfaces():
 
 def main():
     """Run all component tests"""
-    print("Running ScholarsQuill Kiro Component Tests")
+    print("Running ScholarsQuill Component Tests")
     print("=" * 50)
     
     tests = [

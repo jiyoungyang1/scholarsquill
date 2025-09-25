@@ -89,14 +89,14 @@ scholarsquill = "scholarsquill.main:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["scholarsquill_kiro*"]
+include = ["scholarsquill*"]
 exclude = ["tests*"]
 
 [tool.setuptools.package-dir]
-"scholarsquill_kiro" = "src"
+"scholarsquill" = "src"
 
 [tool.setuptools.package-data]
-"scholarsquill_kiro" = ["templates/*.md", "py.typed"]
+"scholarsquill" = ["templates/*.md", "py.typed"]
 
 [tool.black]
 line-length = 88
@@ -123,7 +123,7 @@ extend-exclude = '''
 profile = "black"
 multi_line_output = 3
 line_length = 88
-known_first_party = ["scholarsquill_kiro"]
+known_first_party = ["scholarsquill"]
 known_third_party = ["mcp", "jinja2", "PyPDF2", "pdfplumber", "nltk", "spacy"]
 sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
 

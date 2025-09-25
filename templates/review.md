@@ -188,4 +188,4 @@ graph LR
 **Network Analysis:** {{ network_analysis or "Description of literature connections, clusters, and evolution patterns" }}
 
 ---
-*Generated on {{ generated_at.strftime('%Y-%m-%d %H:%M:%S') }} using ScholarSquill Kiro*
+*Generated on {{ generated_at.strftime('%Y-%m-%d %H:%M:%S') }} using ScholarSquill*

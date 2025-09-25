@@ -1,5 +1,5 @@
 """
-Core data models for ScholarSquill Kiro MCP Server
+Core data models for ScholarSquill MCP Server
 """
 
 from dataclasses import dataclass, field

@@ -19,7 +19,7 @@ def run_test_suite():
     """Run the complete template integration test suite"""
     
     print("=" * 80)
-    print("SCHOLARSQUILL KIRO - TEMPLATE INTEGRATION TEST SUITE")
+    print("SCHOLARSQUILL - TEMPLATE INTEGRATION TEST SUITE")
     print("=" * 80)
     print(f"Started at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print()
@@ -232,7 +232,7 @@ def generate_test_documentation():
     doc_content = """# Template Integration Test Suite Documentation
 
 ## Overview
-This test suite provides comprehensive testing for the ScholarSquill Kiro template integration system.
+This test suite provides comprehensive testing for the ScholarSquill template integration system.
 It validates the fix for the MCP template bypass issue and ensures proper Jinja2 template usage.
 
 ## Test Structure

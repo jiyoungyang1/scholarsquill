@@ -384,6 +384,6 @@ Analysis of citation patterns reveals clustered research communities with strong
 {%- endif %}
 
 ---
-*Literature synthesis generated on {{ generated_at.strftime('%Y-%m-%d %H:%M:%S') }} using ScholarSquill Kiro*
+*Literature synthesis generated on {{ generated_at.strftime('%Y-%m-%d %H:%M:%S') }} using ScholarSquill*
 *Analysis based on {{ papers_analyzed }} papers with relevance threshold optimization*
 *Synthesis approach: {{ focus.value }} focus with {{ depth.value }} depth analysis*

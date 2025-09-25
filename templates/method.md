@@ -191,4 +191,4 @@
 {{ research_directions or "Future research needed to further develop or validate the method" }}
 
 ---
-*Generated on {{ generated_at.strftime('%Y-%m-%d %H:%M:%S') }} using ScholarSquill Kiro*
+*Generated on {{ generated_at.strftime('%Y-%m-%d %H:%M:%S') }} using ScholarSquill*

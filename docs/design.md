@@ -54,7 +54,7 @@ The server follows a layered architecture with clear separation of concerns:
 
 **Interface**:
 ```python
-class ScholarsQuillKiroServer:
+class ScholarsQuillServer:
     async def initialize(self) -> None
     async def handle_tool_call(self, tool_name: str, arguments: dict) -> dict
     async def list_tools(self) -> List[Tool]

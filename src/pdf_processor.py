@@ -1,5 +1,5 @@
 """
-PDF processing component for ScholarSquill Kiro MCP Server
+PDF processing component for ScholarSquill MCP Server
 """
 
 import re

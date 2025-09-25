@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Basic test script for ScholarsQuill Kiro Server components
+Basic test script for ScholarsQuill Server components
 Tests the core logic without MCP dependencies
 """
 
@@ -94,7 +94,7 @@ async def test_server_logic():
         'src.utils': sys.modules['utils']
     }):
         # Import core server (no MCP dependencies)
-        from server_core import ScholarsQuillKiroCore
+        from server_core import ScholarsQuillCore
     
     # Create server with test config
     config = ServerConfig(
@@ -102,7 +102,7 @@ async def test_server_logic():
         log_level="DEBUG"
     )
     
-    server = ScholarsQuillKiroCore(config)
+    server = ScholarsQuillCore(config)
     
     # Test that components are initialized
     assert server.config is not None
@@ -158,7 +158,7 @@ def test_utilities():
 
 async def main():
     """Run all tests"""
-    print("Running ScholarsQuill Kiro Server Tests")
+    print("Running ScholarsQuill Server Tests")
     print("=" * 50)
     
     try:

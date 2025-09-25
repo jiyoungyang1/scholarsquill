@@ -1,6 +1,6 @@
 # Test Examples
 
-This directory contains examples for testing ScholarSquill Kiro functionality.
+This directory contains examples for testing ScholarSquill functionality.
 
 ## Structure
 
@@ -18,4 +18,4 @@ For testing with actual PDF files and generated outputs, see the `dev_artifacts/
 
 ## Usage
 
-The examples in this directory demonstrate the expected input/output format for the ScholarSquill Kiro system without including large binary files in the main repository.
+The examples in this directory demonstrate the expected input/output format for the ScholarSquill system without including large binary files in the main repository.

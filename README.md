@@ -9,7 +9,7 @@
 
 ## What is ScholarsQuill?
 
-ScholarsQuill is an **MCP server** that provides PDF processing capabilities to **Claude Code AI Agent**. This hybrid architecture combines reliable PDF extraction with intelligent AI analysis to automatically generate structured literature notes, citation network visualizations, and discourse pattern analysis - making academic research more efficient and insightful.
+ScholarsQuill is an **MCP server** that provides PDF processing capabilities to **AI Agent**. This hybrid architecture combines reliable PDF extraction with intelligent AI analysis to automatically generate structured literature notes, citation network visualizations, and discourse pattern analysis - making academic research more efficient and insightful.
 
 ## Quick Start
 

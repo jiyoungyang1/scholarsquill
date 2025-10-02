@@ -2,7 +2,7 @@
 
 ## Overview
 
-The ScholarSquill MCP Server now includes robust citekey-based filename generation for literature notes. This ensures consistent, predictable filenames that follow academic citation conventions.
+The ScholarsQuill MCP Server includes robust citekey-based filename generation for literature notes. This ensures consistent, predictable filenames that follow academic citation conventions.
 
 ## Citekey Format
 
@@ -65,26 +65,30 @@ The system extracts the first meaningful word from titles:
 
 ### Sample Files
 
-The testing uses real PDF files from `/Users/yyangg00/scholarsquill/examples/papers/`:
+The testing uses real PDF files from the `test_project/input/` directory:
 
-1. `Bonollo et al. - 2025 - Advancing Molecular Simulations...pdf`
-2. `Cloutier et al. - 2020 - Molecular computations...pdf`
-3. `Ganguly et al. - 2012 - Kirkwood–Buff Coarse-Grained...pdf`
-4. `Kmiecik et al. - 2016 - Coarse-Grained Protein Models...pdf`
-5. `Zidar et al. - 2020 - Control of viscosity...pdf`
+1. `Canchi and García - 2013 - Cosolvent Effects on Protein Stability.pdf`
+2. `Kmiecik et al. - 2016 - Coarse-Grained Protein Models...pdf`
+
+**Note**: Additional sample papers can be added to test more filename generation scenarios.
 
 ### Reference Notes Comparison
 
-The system compares generated notes with existing reference notes in:
-`/Users/yyangg00/scholarsquill/examples/papers/output literature notes/`
+The system generates citekey-based filenames for all output types:
 
-Reference notes include:
-- `bonollo2025advancing_review_analysis.md`
-- `cloutier2020molecular.md`
+**Literature Notes**:
+- `canchi2013cosolvent.md`
 - `kmiecik2016coarsegrained.md`
-- `zidar2020control.md`
-- `simon2022kirkwood.md`
-- `wood2020hdx.md`
+
+**Citation Maps**:
+- `canchi2013cosolvent_citemap.md`
+- `canchi2013cosolvent_citemap_network.html`
+- `kmiecik2016coarsegrained_citemap.md`
+- `kmiecik2016coarsegrained_citemap_network.html`
+
+**Code Language Analysis**:
+- `canchi2013cosolvent_codelang.md`
+- `kmiecik2016coarsegrained_codelang.md`
 
 ### Test Coverage
 
@@ -128,7 +132,7 @@ filename = file_writer.generate_citekey_filename(metadata)
 The MCP server automatically uses citekey-based filenames when processing PDFs:
 
 ```bash
-/sq:note path/to/paper.pdf --focus research --depth standard
+/note path/to/paper.pdf --focus research --depth standard
 # Generates: bonollo2025advancing.md
 ```
 

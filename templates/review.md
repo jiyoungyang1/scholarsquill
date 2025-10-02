@@ -25,6 +25,24 @@
 > **DOI**:: {{ doi }}
 {%- endif %}
 
+{%- if zotero_key %}
+> **Zotero**:: [Open in Zotero]({{ zotero_url }})
+> **Zotero Key**:: {{ zotero_key }}
+{%- endif %}
+{%- if zotero_tags %}
+> **Tags**:: {% for tag in zotero_tags %}#{{ tag|replace('-', '_') }} {% endfor %}
+{%- endif %}
+{%- if zotero_collections %}
+> **Collections**:: {{ zotero_collections|join(', ') }}
+{%- endif %}
+{%- if date_added %}
+> **Date Added**:: {{ date_added }}
+{%- endif %}
+{%- if date_modified %}
+> **Date Modified**:: {{ date_modified }}
+{%- endif %}
+> **PDF**:: [[{{ source_path }}]]
+
 ## Review Overview
 
 ### Scope and Objectives
@@ -188,4 +206,4 @@ graph LR
 **Network Analysis:** {{ network_analysis or "Description of literature connections, clusters, and evolution patterns" }}
 
 ---
-*Generated on {{ generated_at.strftime('%Y-%m-%d %H:%M:%S') }} using ScholarSquill*
+*Generated on {{ generated_at.strftime('%Y-%m-%d %H:%M:%S') }} using ScholarsQuill*

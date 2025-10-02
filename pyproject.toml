@@ -5,15 +5,12 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "scholarsquill"
 version = "0.1.0"
-description = "MCP server for processing scientific PDF papers into structured markdown literature notes"
+description = "Academic PDF processing MCP server with CLI setup tool"
 readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
 authors = [
-    {name = "ScholarSquill Team", email = "team@scholarsquill.com"}
-]
-maintainers = [
-    {name = "ScholarSquill Team", email = "team@scholarsquill.com"}
+    {name = "ScholarsQuill Team", email = "team@scholarsquill.com"}
 ]
 keywords = ["mcp", "pdf", "academic", "literature", "notes", "research", "scientific", "papers"]
 classifiers = [
@@ -35,14 +32,24 @@ classifiers = [
     "Topic :: Education",
 ]
 dependencies = [
-    "mcp>=1.0.0",
+    # MCP server core
+    "mcp>=1.0.0; python_version>='3.10'",
     "PyPDF2>=3.0.0",
     "pdfplumber>=0.10.0",
     "nltk>=3.8.1",
-    "spacy>=3.7.0",
+    "spacy>=3.4.0",
     "jinja2>=3.1.2",
-    "pathlib>=1.0.1",
-    "pydantic>=2.0.0",
+    "pathlib2>=2.3.7; python_version<'3.10'",
+    "pydantic>=1.10.0,<2.0.0; python_version<'3.10'",
+    "pydantic>=2.0.0; python_version>='3.10'",
+    "networkx>=2.8.0",
+    "plotly>=5.0.0",
+    # Zotero integration
+    "pyzotero>=1.5.0",
+    # CLI dependencies
+    "typer>=0.9.0",
+    "rich>=13.0.0",
+    "readchar>=4.0.0",
 ]
 
 [project.optional-dependencies]
@@ -74,8 +81,11 @@ nlp-advanced = [
     "scikit-learn>=1.3.0",
 ]
 all = [
-    "scholarsquill[dev,test,ocr,nlp-advanced]",,
+    "scholarsquill[dev,test,ocr,nlp-advanced]",
 ]
+
+[project.scripts]
+scholarsquill = "scholarsquill_cli:main"
 
 [project.urls]
 Homepage = "https://github.com/scholarsquill/scholarsquill"
@@ -84,16 +94,13 @@ Issues = "https://github.com/scholarsquill/scholarsquill/issues"
 Documentation = "https://github.com/scholarsquill/scholarsquill/wiki"
 Changelog = "https://github.com/scholarsquill/scholarsquill/blob/main/CHANGELOG.md"
 
-[project.scripts]
-scholarsquill = "scholarsquill.main:main"
-
 [tool.setuptools.packages.find]
-where = ["src"]
-include = ["scholarsquill*"]
-exclude = ["tests*"]
+where = ["."]
+include = ["scholarsquill_cli*", "src*"]
+exclude = ["tests*", "@dev_artifacts*", "spec-kit*", "dev_artifacts*", "scholarsquill.egg-info*"]
 
-[tool.setuptools.package-dir]
-"scholarsquill" = "src"
+[tool.setuptools]
+py-modules = ["cli"]
 
 [tool.setuptools.package-data]
 "scholarsquill" = ["templates/*.md", "py.typed"]

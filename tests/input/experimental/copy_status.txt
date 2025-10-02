@@ -1,0 +1,62 @@
+PDF Copy Status for refs-experimental Directory
+
+Based on cite keys extracted from "Integration with Experimental Techniques" section (lines 388-453), the following PDFs should be copied:
+
+SUCCESSFULLY IDENTIFIED MATCHES:
+1. bailly2020predicting -> Bailly et al. - 2020 - Predicting Antibody Developability Profiles Through Early Stage Discovery Screening.pdf (KYH4KAXI/)
+2. canepa2020characterizing -> Canepa et al. - 2020 - Characterizing osmolyte chemical class hierarchies... (ZSYVRKAQ/)
+3. lenard2022solvent -> Lenard et al. - 2022 - Solvent paramagnetic relaxation enhancement... (QVA5UJQ5/)
+4. okuno2021atomic -> Okuno et al. - 2021 - Atomic view of cosolute-induced protein denaturation... (5DNWXYAU/)
+5. okuno2020quantitative -> Okuno et al. - 2020 - Quantitative Interpretation of Solvent Paramagnetic... (GSP3M9UF/)
+6. trevitt2024interactions -> Trevitt et al. - 2024 - Interactions between the protein barnase... (GU7PCSXH/)
+7. penk2024detecting -> Penk et al. - 2024 - Detecting Protein-Ligand Interactions... (AUCGWYQI/)
+8. tang2023crystal -> Tang et al. - 2023 - Crystal structures and molecular dynamics... (LHYUT8CS/)
+9. yip2020atomic -> Yip et al. - 2020 - Atomic-resolution protein structure... (3YTFV843/)
+10. nakane2020single -> Nakane et al. - 2020 - Single-particle cryo-EM... (DEHPTT23/)
+11. lyumkis2019challenges -> Lyumkis - 2019 - Challenges and opportunities in cryo-EM... (4QPVZUVF/)
+12. yan2018architecture -> Yan et al. - 2018 - Architecture of the CBF3–centromere complex... (H68AAYN2/)
+13. castellanos2017investigating -> Castellanos et al. - 2017 - Investigating Structure and Dynamics... (6QCSYSPY/)
+14. clark2013smallangle -> Clark et al. - 2013 - Small-Angle Neutron Scattering Study... (XW9IWLFP/)
+15. mohammadiarani2018interpreting -> Mohammadiarani et al. - 2018 - Interpreting Hydrogen-Deuterium Exchange... (23BZ38BK/)
+16. stofella2025recalibrating -> Stofella et al. - 2025 - Recalibrating Protection Factors... (LVFD3KXN/)
+17. kihn2024integration -> Kihn et al. - 2024 - Integration of Hydrogen–Deuterium Exchange... (MI48WS66/)
+18. wood2020hdx -> Wood et al. - 2020 - HDX and In Silico Docking Reveal... (3NZGPNLQ/)
+19. berisha2019deep -> Berisha et al. - 2019 - Deep learning for FTIR histology... (M9QTGXR5/)
+20. guo2025artificial -> Guo et al. - 2025 - Artificial Intelligence in Spectroscopy... (U9FXZSAP/)
+21. venanzi2020spectroscopic -> Venanzi et al. - 2020 - A spectroscopic and molecular dynamics... (HJS3MBFY/)
+22. mosca2023biophysical -> Mosca et al. - 2023 - Biophysical Determinants for the Viscosity... (2ENX3WDY/)
+23. gulotta2024combining -> Gulotta et al. - 2024 - Combining Scattering Experiments... (FDX7Z2KD/)
+24. jo2020computational -> Jo et al. - 2020 - Computational Characterization of Antibody–Excipient... (ANQZRZVB/)
+25. chowdhury2020coarsegrained -> Chowdhury et al. - 2020 - Coarse-Grained Molecular Dynamics... (CS2ALPT9/)
+26. zidar2020control -> Zidar et al. - 2020 - Control of viscosity in biopharmaceutical... (DWKWUAKM/)
+27. fukuda2014thermodynamic -> Fukuda et al. - 2014 - Thermodynamic and Fluorescence Analyses... (FV5HAZH3/)
+28. piana2020development -> Piana et al. - 2020 - Development of a Force Field... (9L9KE42R/)
+29. cloutier2020molecular -> Cloutier et al. - 2020 - Molecular computations of preferential... (PQGY855U/)
+30. das2007inhibition -> Das et al. - 2007 - Inhibition of Protein Aggregation... (3MFL6SIP/)
+31. ghosh2009effect -> Ghosh et al. - 2009 - Effect of Arginine on Protein Aggregation... (AT2QRMH3/)
+32. ishibashi2005arginine -> Ishibashi et al. - 2005 - Is arginine a protein-denaturant... (WH87KBTT/)
+33. scherer2015role -> Scherer - 2015 - Role of Cosolute–Protein Interactions... (HICS6L47/)
+34. shukla2010interaction -> Shukla and Trout - 2010 - Interaction of Arginine with Proteins... (9IW6GIZR/)
+35. ng2024mechanism -> Ng and Konermann - 2024 - Mechanism of Protein Aggregation Inhibition... (2ESDY4YU/)
+36. sharma2024ontherole -> sharma2024ontherole.pdf (TBLHNSNF/)
+37. schneider2011arginine -> Schneider et al. - 2011 - Arginine and the Hofmeister Series... (MEQC26XF/)
+38. zhang2016influence -> Zhang et al. - 2016 - Influence of Arginine Salts... (Q4ANDRKP/)
+39. tosstorff2020study -> Tosstorff et al. - 2020 - Study of the interaction... (A2A6SV2V/)
+40. orr2025mapping -> Orr et al. - 2025 - Mapping the distribution and affinities... (4I9FSL6D/)
+41. obi2021combined -> Obi and Deredge - 2021 - A Combined HDX-MS and MD Simulation... (K87L99BA/)
+42. saporiti2021igg1 -> Saporiti et al. - 2021 - IgG1 conformational behavior... (6CCRQ8HI/)
+
+CITEKEYS NOT YET MAPPED (need manual review):
+- canchi2010equilibrium
+- keedy2023room  
+- fraser2011accessing
+- barth2007infrared
+- surewicz1993determination
+- pelton2000spectroscopic
+- gallagher2009ftir
+- byler1986examination
+
+Total identified: 42/50 citekeys
+Mapping success rate: 84%
+
+Note: Due to bash environment issues, manual copying is required. Each PDF should be copied from its respective zotero_storage subfolder to this refs-experimental directory.

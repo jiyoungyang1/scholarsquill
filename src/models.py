@@ -1,5 +1,5 @@
 """
-Core data models for ScholarSquill MCP Server
+Core data models for ScholarsQuill MCP Server
 """
 
 from dataclasses import dataclass, field
@@ -66,6 +66,13 @@ class PaperMetadata:
     abstract: Optional[str] = None
     page_count: int = 0
     file_path: str = ""
+    # Zotero integration fields
+    zotero_key: Optional[str] = None
+    zotero_url: Optional[str] = None
+    zotero_tags: Optional[List[str]] = None
+    zotero_collections: Optional[List[str]] = None
+    date_added: Optional[str] = None
+    date_modified: Optional[str] = None
 
 
 @dataclass
@@ -215,3 +222,33 @@ class ReferenceNetwork:
     nodes: List[Dict[str, any]] = field(default_factory=list)  # Reference nodes
     edges: List[Dict[str, any]] = field(default_factory=list)  # Citation relationships
     clusters: Dict[str, List[str]] = field(default_factory=dict)  # Purpose-based clusters
+
+
+# Zotero Integration Models
+
+@dataclass
+class ZoteroConfig:
+    """Configuration for Zotero API connection"""
+    library_id: str
+    library_type: str  # 'user' or 'group'
+    api_key: str
+    cache_ttl: int = 86400  # 24 hours in seconds
+
+
+@dataclass
+class ObsidianConfig:
+    """Configuration for Obsidian output"""
+    vault_path: str
+    use_rest_api: bool = False
+    rest_api_port: int = 27123
+    create_folders: bool = True
+
+
+@dataclass
+class BatchConfig:
+    """Configuration for batch processing"""
+    batch_size: int = 50
+    checkpoint_interval: int = 10
+    cache_ttl: int = 86400
+    max_retries: int = 3
+    retry_delay: int = 5

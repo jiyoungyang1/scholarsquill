@@ -1,5 +1,5 @@
 """
-Template processing engine for ScholarSquill MCP Server
+Template processing engine for ScholarsQuill MCP Server
 """
 
 import os
@@ -420,7 +420,7 @@ class TemplateProcessor(TemplateProcessorInterface):
             # Generation metadata (shared)
             "generation_info": {
                 "generated_at": base_data.get("generated_at"),
-                "generator": "ScholarSquill"
+                "generator": "ScholarsQuill"
             }
         }
         

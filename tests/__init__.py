@@ -1,3 +1,3 @@
 """
-Test suite for ScholarSquill MCP Server
+Test suite for ScholarsQuill MCP Server
 """

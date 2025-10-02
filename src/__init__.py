@@ -1,18 +1,18 @@
 """
-ScholarSquill MCP Server
+ScholarsQuill MCP Server
 
 A Model Context Protocol server for processing scientific PDF papers
 into structured markdown literature notes.
 """
 
 __version__ = "0.1.0"
-__author__ = "ScholarSquill Team"
+__author__ = "ScholarsQuill Team"
 __email__ = "team@scholarsquill.com"
 __license__ = "MIT"
 
 # Main components
-from .server import ScholarsQuillServer
-from .config import ServerConfig, ProcessingConfig, TemplateConfig
+from .legacy_mcp_server.server import ScholarsQuillServer
+from .legacy_mcp_server.config import ServerConfig, ProcessingConfig, TemplateConfig
 from .models import (
     PaperMetadata,
     ProcessingOptions,

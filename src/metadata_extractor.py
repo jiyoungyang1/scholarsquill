@@ -92,11 +92,11 @@ class MetadataExtractor:
         return metadata
     
     def _extract_text_metadata(self, text: str) -> Dict[str, Any]:
-        """Extract metadata from first page text using heuristics"""
+        """Extract metadata from first page text using enhanced heuristics"""
         metadata = {}
         
-        # Get first page (approximately first 3000 characters)
-        first_page = text[:3000]
+        # Get first page (approximately first 4000 characters for better coverage)
+        first_page = text[:4000]
         lines = [line.strip() for line in first_page.split('\n') if line.strip()]
         
         # Extract title using multiple methods
@@ -105,12 +105,31 @@ class MetadataExtractor:
             metadata['text_title'] = title
             self.logger.debug(f"Extracted title from text: {title}")
         
-        # Extract authors
+        # Extract authors with improved parsing
         authors = self._extract_authors_from_lines(lines)
         if authors:
             metadata['text_authors'] = authors
             metadata['text_first_author'] = authors[0]
             self.logger.debug(f"Extracted authors from text: {authors}")
+        
+        # Extract year from text with validation
+        year = self._extract_year_from_text(first_page)
+        if year:
+            metadata['text_year'] = year
+            
+        # Extract journal information
+        journal_info = self._extract_journal_from_text(first_page)
+        metadata.update(journal_info)
+        
+        # Extract DOI
+        doi = self._extract_doi_from_text(first_page)
+        if doi:
+            metadata['text_doi'] = doi
+        
+        # Extract abstract if present
+        abstract = self._extract_abstract_from_text(text[:5000])
+        if abstract:
+            metadata['text_abstract'] = abstract
         
         return metadata
     
@@ -153,19 +172,42 @@ class MetadataExtractor:
         """Extract DOI, year, and other metadata from full content"""
         metadata = {}
         
-        # Extract DOI
+        # Enhanced DOI extraction with more comprehensive patterns
         doi_patterns = [
-            r'(?:doi:|DOI:)\s*(10\.\d+/[^\s]+)',
-            r'\b(10\.\d+/[^\s]+)\b',
-            r'https?://(?:dx\.)?doi\.org/(10\.\d+/[^\s]+)'
+            # Traditional DOI patterns
+            r'(?:doi:|DOI:)\s*(10\.\d+/[^\s,\]\)]+)',
+            r'\bdoi:\s*(10\.\d+/[^\s,\]\)]+)',
+            r'\bDOI:\s*(10\.\d+/[^\s,\]\)]+)',
+            
+            # URL-based DOI patterns
+            r'https?://(?:dx\.)?doi\.org/(10\.\d+/[^\s,\]\)]+)',
+            r'https?://doi\.org/(10\.\d+/[^\s,\]\)]+)',
+            
+            # Bare DOI patterns (more restrictive to avoid false positives)
+            r'\b(10\.\d{4,}/[^\s,\]\)\.]{6,}[^\s,\]\)\.]*)',
+            
+            # DOI in parentheses or brackets
+            r'\(doi:\s*(10\.\d+/[^\s,\)\]]+)\)',
+            r'\[doi:\s*(10\.\d+/[^\s,\)\]]+)\]',
+            
+            # DOI with common prefixes in academic text
+            r'(?:available at:?\s*)?(?:https?://)?(?:dx\.)?doi\.org/(10\.\d+/[^\s,\]\)]+)',
+            
+            # DOI patterns in reference lists
+            r'doi\s*[:=]\s*(10\.\d+/[^\s,\]\)]+)',
+            r'DOI\s*[:=]\s*(10\.\d+/[^\s,\]\)]+)'
         ]
         
         for pattern in doi_patterns:
-            match = re.search(pattern, text)
+            match = re.search(pattern, text, re.IGNORECASE)
             if match:
-                metadata['content_doi'] = match.group(1)
-                self.logger.debug(f"Found DOI: {match.group(1)}")
-                break
+                doi = match.group(1) if match.groups() else match.group(0)
+                # Clean and validate DOI
+                cleaned_doi = self._clean_and_validate_doi(doi)
+                if cleaned_doi:
+                    metadata['content_doi'] = cleaned_doi
+                    self.logger.debug(f"Found DOI: {cleaned_doi}")
+                    break
         
         # Extract year (look for 4-digit years in reasonable range)
         year_pattern = r'\b(19[8-9]\d|20[0-2]\d)\b'
@@ -525,3 +567,104 @@ class MetadataExtractor:
                 return False
         
         return True
+    
+    def _extract_year_from_text(self, text: str) -> Optional[int]:
+        """Extract publication year from text"""
+        # Look for 4-digit years in reasonable range
+        year_pattern = r'\b(19[8-9]\d|20[0-2]\d)\b'
+        matches = re.findall(year_pattern, text)
+        
+        if matches:
+            # Return the most recent reasonable year
+            years = [int(year) for year in matches]
+            return max(years)
+        
+        return None
+    
+    def _extract_journal_from_text(self, text: str) -> Dict[str, str]:
+        """Extract journal information from text"""
+        journal_info = {}
+        
+        # Common journal patterns
+        journal_patterns = [
+            r'\b([A-Z][a-zA-Z\s&]+Journal[a-zA-Z\s]*)',
+            r'\b([A-Z][a-zA-Z\s&]+Review[a-zA-Z\s]*)',
+            r'\b([A-Z][a-zA-Z\s&]+Letters[a-zA-Z\s]*)',
+            r'\b(Nature(?:\s+[A-Z][a-zA-Z]*)?)',
+            r'\b(Science(?:\s+[A-Z][a-zA-Z]*)?)',
+            r'\b(Cell(?:\s+[A-Z][a-zA-Z]*)?)'
+        ]
+        
+        for pattern in journal_patterns:
+            match = re.search(pattern, text)
+            if match:
+                journal_name = match.group(1).strip()
+                journal_name = re.sub(r'\s+', ' ', journal_name)
+                journal_name = re.sub(r'[.,;:]$', '', journal_name)
+                
+                if 5 <= len(journal_name) <= 100:
+                    journal_info['journal'] = journal_name
+                    break
+        
+        # Look for volume/issue/pages
+        vol_match = re.search(r'Vol\.?\s*(\d+)', text, re.IGNORECASE)
+        if vol_match:
+            journal_info['volume'] = vol_match.group(1)
+        
+        issue_match = re.search(r'(?:No\.|Issue)\s*(\d+)', text, re.IGNORECASE)
+        if issue_match:
+            journal_info['issue'] = issue_match.group(1)
+        
+        pages_match = re.search(r'pp\.?\s*(\d+[-–]\d+)', text, re.IGNORECASE)
+        if pages_match:
+            journal_info['pages'] = pages_match.group(1)
+        
+        return journal_info
+    
+    def _extract_doi_from_text(self, text: str) -> Optional[str]:
+        """Extract DOI from text"""
+        doi_patterns = [
+            r'doi:?\s*(10\.\d+/[^\s,]+)',
+            r'DOI:?\s*(10\.\d+/[^\s,]+)',
+            r'\b(10\.\d+/[^\s,]+)\b'
+        ]
+        
+        for pattern in doi_patterns:
+            match = re.search(pattern, text, re.IGNORECASE)
+            if match:
+                return match.group(1)
+        
+        return None
+    
+    def _clean_and_validate_doi(self, doi: str) -> Optional[str]:
+        """Clean and validate DOI format"""
+        if not doi:
+            return None
+        
+        # Remove common prefixes and suffixes
+        doi = re.sub(r'^(?:doi:|DOI:)\s*', '', doi, flags=re.IGNORECASE)
+        doi = re.sub(r'^(?:https?://)?(?:dx\.)?doi\.org/', '', doi, flags=re.IGNORECASE)
+        
+        # Remove trailing punctuation that's not part of DOI
+        doi = re.sub(r'[.,;:\]\)\s]+$', '', doi)
+        
+        # Basic DOI format validation: should start with 10. and have reasonable length
+        if re.match(r'^10\.\d{4,}/[^\s]{6,}$', doi) and len(doi) < 200:
+            return doi
+        
+        return None
+    
+    def _extract_abstract_from_text(self, text: str) -> Optional[str]:
+        """Extract abstract from text"""
+        # Look for abstract section
+        abstract_pattern = r'(?:ABSTRACT|Abstract)\s*[:\-]?\s*\n?(.*?)(?:\n\s*\n|\n\s*(?:Keywords|KEYWORDS|Introduction|INTRODUCTION))'
+        match = re.search(abstract_pattern, text, re.DOTALL | re.IGNORECASE)
+        
+        if match:
+            abstract = match.group(1).strip()
+            # Clean up the abstract
+            abstract = re.sub(r'\s+', ' ', abstract)  # Normalize whitespace
+            if 50 <= len(abstract) <= 2000:  # Reasonable length
+                return abstract
+        
+        return None
